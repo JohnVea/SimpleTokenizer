@@ -12,7 +12,7 @@ class Tokenizer:
         self._build_vocabulary(vocabulary)
 
     def _build_vocabulary(self, vocabulary):
-        baseAlphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-_.!~*'()@#&$%^+=,;:<>?/|\\\"[]{}`"
+        baseAlphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-_.!~*'()@#&$%^+=,;:<>?/|\\\"[]{}`àáàâäãåæçéèêëíìîïñóòôöõøúùûüýÿÀÁÂÄÃÅÆÇÉÈÊËÍÌÎÏÑÓÒÔÖÕØÚÙÛÜÝßćčďđłńňŕřšťžźżĆČĎĐŁŃŇŘŠŤŽŹŻÀÁÂÄÃÅÆÇÉÈÊËÍÌÎÏÑÓÒÔÖÕØÚÙÛÜÝßćčďđłńňŕřšťžźżĆČĎĐŁŃŇŘŠŤŽŹŻ"
         for i, word in enumerate(baseAlphabet):
             
             if i >= self.vocabSize:
@@ -97,6 +97,7 @@ class Tokenizer:
                 if startOfWord == 1:
                     encoded.append(self.vocabulary["<EOW>"])
                     startOfWord = 0
+        print()
         print("Encoded: ", encoded)
         return encoded
     
@@ -142,8 +143,8 @@ class Tokenizer:
 
 
 
-tokenizer = Tokenizer(vocabulary="low lowest John the be to of and a in that have I it for not on with he as you do at this but his by from they we say her she or an will my one Smith Johnson Williams Brown Jones Garcia Miller Davis Rodriguez Wilson James John Robert Michael David William Richard Joseph Mary Patricia Jennifer Linda Elizabeth Barbara Susan Margaret\n Over hill, over dale, Thorough bush, thorough brier, Over park, over pale, Thorough flood, thorough fire! I do wander everywhere, Swifter than the moon's sphere; And I serve the Fairy Queen, To dew her orbs upon the green; The cowslips tall her pensioners be; In their gold coats spots you see; Those be rubies, fairy favours; In those freckles live their savours; I must go seek some dewdrops here, And hang a pearl in every cowslip's ear.", vocabSize=659)
+tokenizer = Tokenizer(vocabulary="low lowest John the be to of and a in that have I it for not on with he as you do at this but his by from they we say her she or an will my one Smith Johnson Williams Brown Jones Garcia Miller Davis Rodriguez Wilson James John Robert Michael David William Richard Joseph Mary Patricia Jennifer Linda Elizabeth Barbara Susan Margaret\n Over hill, over dale, Thorough bush, thorough brier, Over park, over pale, Thorough flood, thorough fire! I do wander everywhere, Swifter than the moon's sphere; And I serve the Fairy Queen, To dew her orbs upon the green; The cowslips tall her pensioners be; In their gold coats spots you see; Those be rubies, fairy favours; In those freckles live their savours; I must go seek some dewdrops here, And hang a pearl in every cowslip's ear.", vocabSize=713)
 
-lowwjohn = tokenizer.encode("low w john is cool<PAD>")
+lowwjohn = tokenizer.encode("low w john is cool And I Built this thing wi bonsoir  merçi<PAD>")
 
 print("Decoded: " + tokenizer.decode(lowwjohn))
